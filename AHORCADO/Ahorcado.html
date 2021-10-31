@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./ahorcado/css/index.css" />
+    <title>Ahorcado</title>
+
+    <!-- <script>
+        onload = function () {
+            let palabras = ["casa", "coche", "ordenador"];
+        let nr = Math.floor(Math.random() * (palabras.length - 0) + 0);
+        let palabra = palabras[nr];
+        var relleno = "";
+        var array = [];
+        for (let i = 0; i < palabra.length; i++) {
+            relleno = relleno + " _";
+            array[i] = "_";
+        }
+        document.getElementById("palabra").innerHTML = "<p>" + relleno + "</p>";
+
+        function comprobar(letra) {
+            let letrita = letra.id;
+            console.log(letrita);
+            for (let i = 0; i < palabra.length; i++) {
+                if (letrita == palabra[i]) {
+                    array[i] = letrita;
+                }
+            }
+            document.getElementById("palabra").innerHTML = "<p>" + array.join(" ") + "</p>";
+        }
+        }
+    </script> -->
+</head>
+
+<body>
+    <div id="palabra"></div>
+    <table>
+        <tr>
+            <td><Button id="a" onclick="comprobar(this)">A</Button></td>
+            <td><Button id="b" onclick="comprobar(this)">B</Button></td>
+            <td><Button id="c" onclick="comprobar(this)">C</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="d" onclick="comprobar(this)">D</Button></td>
+            <td><Button id="e" onclick="comprobar(this)">E</Button></td>
+            <td><Button id="f" onclick="comprobar(this)">F</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="g" onclick="comprobar(this)">G</Button></td>
+            <td><Button id="h" onclick="comprobar(this)">H</Button></td>
+            <td><Button id="i" onclick="comprobar(this)">I</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="j" onclick="comprobar(this)">J</Button></td>
+            <td><Button id="k" onclick="comprobar(this)">K</Button></td>
+            <td><Button id="l" onclick="comprobar(this)">L</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="m" onclick="comprobar(this)">M</Button></td>
+            <td><Button id="n" onclick="comprobar(this)">N</Button></td>
+            <td><button id="ñ" onclick="comprobar(this)">Ñ</button></td>
+        </tr>
+        <tr>
+            <td><Button id="o" onclick="comprobar(this)">O</Button></td>
+            <td><Button id="p" onclick="comprobar(this)">P</Button></td>
+            <td><Button id="q" onclick="comprobar(this)">Q</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="r" onclick="comprobar(this)">R</Button></td>
+            <td><Button id="s" onclick="comprobar(this)">S</Button></td>
+            <td><Button id="t" onclick="comprobar(this)">T</Button></td>
+        </tr>
+        <tr>
+            <td><Button id="u" onclick="comprobar(this)">U</Button></td>
+            <td><Button id="v" onclick="comprobar(this)">V</Button></td>
+            <td><Button id="w" onclick="comprobar(this)">W</Button></td>
+        </tr>
+        <tr>
+            <td><Button class="hola" id="x" onclick="comprobar(this)">X</Button></td>
+            <td><Button class="hola" id="y" onclick="comprobar(this)">Y</Button></td>
+            <td><Button class="hola" id="z" onclick="comprobar(this)">Z</Button></td>
+        </tr>
+    </table>
+
+
+    <div id="intentos">
+        <img src="./ahorcado/imagenes/contador0.png">
+    </div>
+
+    <script>
+        let palabras = ["casa", "coche", "ordenador"];
+        let nr = Math.floor(Math.random() * (palabras.length));
+        let palabra = palabras[nr];
+        let relleno = "";
+        let array = [];
+        let contadora = 0;
+        let parar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
+
+        for (let i = 0; i < palabra.length; i++) {
+            relleno = relleno + " _";
+            array[i] = "_";
+        }
+        document.getElementById("palabra").innerHTML = "<p>" + relleno + "</p>";
+
+        function comprobar(letra) {
+            let letrita = letra.id;
+            console.log(letrita);
+            let contadorb = 0;
+            for (let i = 0; i < palabra.length; i++) {
+                if (letrita == palabra[i]) {
+                    array[i] = letrita;
+                }
+                else {
+
+                    contadorb++;
+                    if (contadorb == palabra.length) {
+                        contadora++
+                    }
+                }
+            }
+
+            if (palabra == array.join("")) {
+                document.getElementById("palabra").innerHTML = "<p> Has acertado! La palabra era " + array.join("") + "</p>";
+            }
+            else {
+                document.getElementById("palabra").innerHTML = "<p>" + array.join(" ") + "</p>";
+            }
+            document.getElementById(letrita).disabled = true;
+            document.getElementById(letrita).style.backgroundColor = "black";
+            //document.getElementById("intentos").innerHTML = "<p> TE QUEDA " + contadora + " INTENTOS!</p>";
+        
+            switch (contadora) {
+            case 4:
+                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador4.png">';
+                break;
+            case 3:
+                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador3.png">';
+                break;
+            case 2:
+                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador2.png">';
+                break;
+            case 1:
+                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador1.png">';
+                break;
+
+            case 5:
+                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador5.png">';
+                for(let i = 0; i < parar.length; i++)
+                {
+                    document.getElementById(parar[i]).disabled = true;
+                    document.getElementById(parar[i]).style.backgroundColor = "black";   
+                }
+                break;
+        }
+        }
+        
+        //document.getElementById("intentos").innerHTML = "<p> TE QUEDA " + contadora + " INTENTOS!</p>";
+    </script>
+</body>
+
+</html>
