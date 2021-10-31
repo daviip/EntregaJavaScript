@@ -5,10 +5,11 @@
 
 body, .main, footer {
 	background-color: lemonchiffon;
-	width: 900px;
+	width: 70%;
 	margin: 5px auto;
 	padding: auto;
 	}
+
 
 h1{
     font-family: fantasy;
