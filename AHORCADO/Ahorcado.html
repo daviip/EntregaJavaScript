@@ -26,8 +26,8 @@
             relleno = relleno + " _";
             array[i] = "_";
         }
-    
-        document.getElementById("palabra").innerHTML = "<p>" + relleno + "</p>";
+        
+        document.getElementById("palabra").innerHTML = "<p><b>PAISES</b></p><p>" + relleno + "</p>";
     }
         function comprobar(letra) {
             let letrita = letra.id;
@@ -86,7 +86,8 @@
 </head>
 
 <body>
-    <div id="palabra"></div>
+    <div id="palabra">
+    </div>
     <table>
         <tr>
             <td><Button id="a" onclick="comprobar(this)">A</Button></td>
