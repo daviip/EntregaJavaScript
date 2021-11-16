@@ -10,8 +10,8 @@
     <script src="ahorcado/diccionario.js"></script>
     <script>
         const palabras = diccionario;
-        
-        
+
+
         let nr = Math.floor(Math.random() * palabras.length);
         let palabra = palabras[nr];
         //let palabra = palabras;
@@ -19,16 +19,16 @@
         let relleno = "";
         let array = [];
         let contadora = 0;
-        let parar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
+        let parar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-        onload = function(){
-        for (let i = 0; i < palabra.length; i++) {
-            relleno = relleno + " _";
-            array[i] = "_";
+        onload = function () {
+            for (let i = 0; i < palabra.length; i++) {
+                relleno = relleno + " _";
+                array[i] = "_";
+            }
+
+            document.getElementById("palabra").innerHTML = "<p><b>PAISES</b></p><p>" + relleno + "</p>";
         }
-        
-        document.getElementById("palabra").innerHTML = "<p><b>PAISES</b></p><p>" + relleno + "</p>";
-    }
         function comprobar(letra) {
             let letrita = letra.id;
             console.log(letrita);
@@ -47,6 +47,10 @@
             }
 
             if (palabra == array.join("")) {
+                for (let i = 0; i < parar.length; i++) {
+                    document.getElementById(parar[i]).disabled = true;
+                    document.getElementById(parar[i]).style.backgroundColor = "black";
+                }
                 document.getElementById("palabra").innerHTML = "<p> Has acertado! La palabra era " + array.join("") + "</p>";
             }
             else {
@@ -54,35 +58,32 @@
             }
             document.getElementById(letrita).disabled = true;
             document.getElementById(letrita).style.backgroundColor = "black";
-        
-            switch (contadora) {
-            case 4:
-                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador4.png">';
-                break;
-            case 3:
-                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador3.png">';
-                break;
-            case 2:
-                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador2.png">';
-                break;
-            case 1:
-                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador1.png">';
-                break;
 
-            case 5:
-                document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador5.png">';
-                for(let i = 0; i < parar.length; i++)
-                {
-                    document.getElementById(parar[i]).disabled = true;
-                    document.getElementById(parar[i]).style.backgroundColor = "black";   
-                }
-                break;
+            switch (contadora) {
+                case 4:
+                    document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador4.png">';
+                    break;
+                case 3:
+                    document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador3.png">';
+                    break;
+                case 2:
+                    document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador2.png">';
+                    break;
+                case 1:
+                    document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador1.png">';
+                    break;
+
+                case 5:
+                    document.getElementById("intentos").innerHTML = '<img src="./ahorcado/imagenes/contador5.png">';
+                    for (let i = 0; i < parar.length; i++) {
+                        document.getElementById(parar[i]).disabled = true;
+                        document.getElementById(parar[i]).style.backgroundColor = "black";
+                    }
+                    break;
+            }
         }
-        }
-        
-        
     </script>
-    
+
 </head>
 
 <body>
@@ -141,7 +142,7 @@
         <img src="./ahorcado/imagenes/contador0.png">
     </div>
 
-    
+
 </body>
 
 </html>

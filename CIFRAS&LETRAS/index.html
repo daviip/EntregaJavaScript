@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/letras.css">
+    <title>Cifras y Letras</title>
+    <script>
+        function dameS()
+        {
+            // Codigo para conseguir la solucion
+            document.getElementById("dameV").disabled = true;
+            document.getElementById("dameC").disabled = true;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Juego de las letras</h1>
+    <button onclick="dameV()" id="dameV">Vocal</button>
+    <button onclick="dameC()" id="dameC">Consonante</button><br>
+    <input type="text" name="letras" id="letras"><br>
+    <button onclick="dameS()" id="dameS" disabled>Buscar soluciones</button>
+    <div id="soluciones"></div>
+</body>
+
+</html>
