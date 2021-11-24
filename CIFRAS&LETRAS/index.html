@@ -11,9 +11,39 @@
         function dameS()
         {
             // Codigo para conseguir la solucion
-            document.getElementById("dameV").disabled = true;
-            document.getElementById("dameC").disabled = true;
+            
         }
+
+        function dameV()
+        {
+            let vocales = ["A","E","I","O","U"];
+            let numeroR = Math.floor(Math.random() * (vocales.length - 0));
+            let vocalR = vocales[numeroR];
+            console.log(vocalR);
+            document.getElementById("letras").value += vocalR;
+            if(document.getElementById("letras").value.length == 7)
+            {
+                document.getElementById("dameV").disabled = true;
+                document.getElementById("dameC").disabled = true;
+                document.getElementById("dameS").disabled = false;
+            }
+        }
+
+        function dameC()
+        {
+            let consonantes = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "N", "M", "Ñ", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
+            let numeroR = Math.floor(Math.random() * (consonantes.length - 0));
+            let consonanteR = consonantes[numeroR];
+            console.log(consonanteR);
+            document.getElementById("letras").value += consonanteR;
+            if(document.getElementById("letras").value.length == 7)
+            {
+                document.getElementById("dameV").disabled = true;
+                document.getElementById("dameC").disabled = true;
+                document.getElementById("dameS").disabled = false;
+            }
+        }
+
     </script>
 </head>
 
