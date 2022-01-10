@@ -7,21 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/letras.css">
     <title>Cifras y Letras</title>
+    <script src="./dic.js"></script>
+
     <script>
-        function dameS()
-        {
-            // Codigo para conseguir la solucion
-            
-        }
+        var letr = [];
 
         function dameV()
         {
-            let vocales = ["A","E","I","O","U"];
+            let vocales = ["A", "E", "I", "O", "U"];
             let numeroR = Math.floor(Math.random() * (vocales.length - 0));
             let vocalR = vocales[numeroR];
-            console.log(vocalR);
+            //console.log(vocalR);
+            letr.push(vocalR);
             document.getElementById("letras").value += vocalR;
-            if(document.getElementById("letras").value.length == 7)
+            if (document.getElementById("letras").value.length == 7)
             {
                 document.getElementById("dameV").disabled = true;
                 document.getElementById("dameC").disabled = true;
@@ -34,15 +33,75 @@
             let consonantes = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "N", "M", "Ñ", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
             let numeroR = Math.floor(Math.random() * (consonantes.length - 0));
             let consonanteR = consonantes[numeroR];
-            console.log(consonanteR);
+            //console.log(consonanteR);
+            letr.push(consonanteR);
             document.getElementById("letras").value += consonanteR;
-            if(document.getElementById("letras").value.length == 7)
+            if (document.getElementById("letras").value.length == 7)
             {
                 document.getElementById("dameV").disabled = true;
                 document.getElementById("dameC").disabled = true;
                 document.getElementById("dameS").disabled = false;
             }
         }
+
+        function dameS()
+        {
+            letr.sort();
+            console.log(letr);
+            let soluciones = [];
+            diccionario.forEach(element =>
+            {
+                var palabra = element.toUpperCase();
+                //console.log(palabra.length);
+                var coincidencia = "";
+
+                for (let i = 0; i < palabra.length; i++)
+                { //letras palabra dicc
+
+                    for (let j = 0; j < letr.length; j++)
+                    { //letras random
+
+                        if (palabra[i] == letr[j])
+                        {
+                            coincidencia += palabra[i];
+                        }
+                    }
+                }
+
+                if (coincidencia == palabra && coincidencia.length >= 4)
+                { //coinciden con la palabra del dicc
+                    soluciones.push(coincidencia);
+                }
+            });
+            console.log(soluciones);
+            soluciones.forEach(element =>
+            {
+                let tamañoPalabra = element.length;
+                switch (tamañoPalabra)
+                {
+                    case 4:
+                        document.getElementById("p4").innerHTML += " " + element + " ";
+                        break;
+                    case 5: 
+                        document.getElementById("p5").innerHTML += " " + element + " ";
+                        break;
+                    case 6:
+                        document.getElementById("p6").innerHTML += " " + element + " ";
+                        break;
+                    case 7:
+                        document.getElementById("p7").innerHTML += " " + element + " ";
+                        break;
+                    case 8:
+                        document.getElementById("p8").innerHTML += " " + element + " ";
+                        break;
+                    case 9:
+                        document.getElementById("p9").innerHTML += " " + element + " ";
+                        break;
+                }
+
+            });
+        }
+
 
     </script>
 </head>
@@ -53,7 +112,12 @@
     <button onclick="dameC()" id="dameC">Consonante</button><br>
     <input type="text" name="letras" id="letras"><br>
     <button onclick="dameS()" id="dameS" disabled>Buscar soluciones</button>
-    <div id="soluciones"></div>
+    <br><span id="p9">De 9 letras:</span>
+    <br><span id="p8">De 8 letras:</span>
+    <br><span id="p7">De 7 letras:</span>
+    <br><span id="p6">De 6 letras:</span>
+    <br><span id="p5">De 5 letras:</span>
+    <br><span id="p4">De 4 letras:</span>
 </body>
 
 </html>
