@@ -1,3 +1,43 @@
 *{
     text-align: center;
+    background-color: rgb(231, 231, 231);
+}
+
+#explicacion{
+    margin-left: 35%;
+    margin-right: 35%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: red 5px dotted;
+    border-radius: 500px;
+}
+
+.but{
+    margin: 2px;
+    border: blue ridge 5px;
+    background-color: rgb(170, 255, 251);
+    border-radius: 25%;
+}
+
+.but:disabled{
+    border: red ridge 5px;
+    background-color: black;
+    color: red;
+}
+
+.but:disabled:hover{
+    border: red ridge 5px;
+    background-color: black;
+    color: red;
+}
+
+.but:hover{
+    border: rgb(30, 255, 0) ridge 5px;
+    background-color: rgb(180, 255, 170);
+}
+
+input{
+    margin: 1%;
+    border: rgb(204, 0, 255) ridge 5px;
+    background-color: rgb(224, 170, 255);
 }
