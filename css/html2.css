@@ -43,3 +43,7 @@ a{
 	height: 300px;
 	float: right;
 }
+
+li{
+	padding: 1px;
+}
